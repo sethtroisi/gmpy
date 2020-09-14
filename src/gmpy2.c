@@ -407,6 +407,9 @@
  *    Fixed incorrect results in f2q().
  *    Adjust test suite to reflect changes in output in MPFR 4.1.0.
  *
+ *    2.1.0b6
+ *    Added prev_prime if part of loaded gmp
+ *
  *
  ************************************************************************
  *
@@ -467,7 +470,7 @@
 
 /* The following global strings are used by gmpy_misc.c. */
 
-char gmpy_version[] = "2.1.0b5";
+char gmpy_version[] = "2.1.0b6";
 
 char gmpy_license[] = "\
 The GMPY2 source code is licensed under LGPL 3 or later. The supported \
@@ -708,6 +711,7 @@ static PyMethodDef Pygmpy_methods [] =
     { "mul", GMPy_Context_Mul, METH_VARARGS, GMPy_doc_function_mul },
     { "multi_fac", GMPy_MPZ_Function_MultiFac, METH_VARARGS, GMPy_doc_mpz_function_multi_fac },
     { "next_prime", GMPy_MPZ_Function_NextPrime, METH_O, GMPy_doc_mpz_function_next_prime },
+    { "prev_prime", GMPy_MPZ_Function_PrevPrime, METH_O, GMPy_doc_mpz_function_prev_prime },
     { "numer", GMPy_MPQ_Function_Numer, METH_O, GMPy_doc_mpq_function_numer },
     { "num_digits", GMPy_MPZ_Function_NumDigits, METH_VARARGS, GMPy_doc_mpz_function_num_digits },
     { "pack", GMPy_MPZ_pack, METH_VARARGS, doc_pack },
@@ -876,7 +880,7 @@ static PyMethodDef Pygmpy_methods [] =
 };
 
 static char _gmpy_docs[] =
-"gmpy2 2.1.0b5 - General Multiple-precision arithmetic for Python\n"
+"gmpy2 2.1.0b6 - General Multiple-precision arithmetic for Python\n"
 "\n"
 "gmpy2 supports several multiple-precision libraries. Integer and\n"
 "rational arithmetic is provided by the GMP library. Real floating-\n"

@@ -1,6 +1,11 @@
 Changes for gmpy2 releases
 ==========================
 
+Changes in gmpy2 2.1.0b6
+------------------------
+
+* Added prev_prime() when GMP >= 6.3
+
 Changes in gmpy2 2.1.0b1
 ------------------------
 

@@ -84,6 +84,7 @@ static PyObject * GMPy_MPZ_Function_IsCongruent(PyObject *self, PyObject *args);
 static PyObject * GMPy_MPZ_Function_IsPower(PyObject *self, PyObject *other);
 static PyObject * GMPy_MPZ_Function_IsPrime(PyObject *self, PyObject *args);
 static PyObject * GMPy_MPZ_Function_NextPrime(PyObject *self, PyObject *other);
+static PyObject * GMPy_MPZ_Function_PrevPrime(PyObject *self, PyObject *other);
 static PyObject * GMPy_MPZ_Function_Jacobi(PyObject *self, PyObject *args);
 static PyObject * GMPy_MPZ_Function_Legendre(PyObject *self, PyObject *args);
 static PyObject * GMPy_MPZ_Function_Kronecker(PyObject *self, PyObject *args);

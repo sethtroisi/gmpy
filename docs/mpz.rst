@@ -360,6 +360,9 @@ mpz Functions
     a power of 2. For other bases, the result is usually correct but may
     be 1 too large. *base* can range between 2 and 62, inclusive.
 
+**prev_prime(...)**
+    prev_prime(x) returns the previous **probable** prime number < *x*.
+
 **popcount(...)**
     popcount(x) returns the number of bits with value 1 in *x*. If *x* < 0,
     the number of bits with value 1 is infinite so -1 is returned in that case.

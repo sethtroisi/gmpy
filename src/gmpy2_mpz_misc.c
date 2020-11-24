@@ -1441,36 +1441,36 @@ PyDoc_STRVAR(GMPy_doc_mpz_function_prev_prime,
 static PyObject *
 GMPy_MPZ_Function_PrevPrime(PyObject *self, PyObject *other)
 {
-    MPZ_Object *result;
+    #if (__GNU_MP_VERSION > 6) || (__GNU_MP_VERSION == 6 &&  __GNU_MP_VERSION_MINOR > 2)
+        MPZ_Object *result;
 
-    #if (__GNU_MP_VERSION < 6) || (__GNU_MP_VERSION == 6 &&  __GNU_MP_VERSION_MINOR < 2)
-        Py_RETURN_NOTIMPLEMENTED;
-    #endif
-
-    if(MPZ_Check(other)) {
-        if(!(result = GMPy_MPZ_New(NULL))) {
-            /* LCOV_EXCL_START */
-            return NULL;
-            /* LCOV_EXCL_STOP */
-        }
-        if (!mpz_prevprime(result->z, MPZ(other))) {
-            /* no previous prime, default to 2 in this case */
-            mpz_set_ui(result->z, 2);
-        }
-    }
-    else {
-        if (!(result = GMPy_MPZ_From_Integer(other, NULL))) {
-            TYPE_ERROR("prev_prime() requires 'mpz' argument");
-            return NULL;
-        }
-        else {
-            if (!mpz_prevprime(result->z, result->z)) {
+        if(MPZ_Check(other)) {
+            if(!(result = GMPy_MPZ_New(NULL))) {
+                /* LCOV_EXCL_START */
+                return NULL;
+                /* LCOV_EXCL_STOP */
+            }
+            if (!mpz_prevprime(result->z, MPZ(other))) {
                 /* no previous prime, default to 2 in this case */
                 mpz_set_ui(result->z, 2);
             }
         }
-    }
-    return (PyObject*)result;
+        else {
+            if (!(result = GMPy_MPZ_From_Integer(other, NULL))) {
+                TYPE_ERROR("prev_prime() requires 'mpz' argument");
+                return NULL;
+            }
+            else {
+                if (!mpz_prevprime(result->z, result->z)) {
+                    /* no previous prime, default to 2 in this case */
+                    mpz_set_ui(result->z, 2);
+                }
+            }
+        }
+        return (PyObject*)result;
+    #endif
+
+    Py_RETURN_NOTIMPLEMENTED;
 }
 
 
